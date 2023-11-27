@@ -86,3 +86,67 @@ def is_arms(arg):
 
     else:
         return TypeError
+
+
+def is_prime(num):
+    if num < 2:
+        return False
+    for i in range(2, int(num**0.5) + 1):
+        if num % i == 0:
+            return False
+    return True
+
+
+def Prime(n):
+    primes = []
+    candidate = 2
+    while len(primes) < n:
+        if is_prime(candidate):
+            primes.append(candidate)
+        candidate += 1
+
+    return primes[-1]
+
+
+def factorial(n):
+    if n == 0:
+        return 1
+    else:
+        return n * factorial(n - 1)
+
+
+def fibonacci(n):
+    a = 0
+    b = 1
+    count = 0
+    try:
+        if n <= 0:
+            print("no negative integers or 0 is allowed")
+        elif n == 1:
+            return a
+        else:
+            for i in range(1, n):
+                temp = a + b
+                a = b
+                b = temp
+            return a
+    except:
+        raise TypeError(": Only integers are allowed")
+
+
+def binary_num_search(arr, start, stop, item):
+    array = sorted(arr)
+    if not stop >= start:
+        return "not in array"
+    middle = (start + stop) // 2
+    if array[middle] == item:
+        return f"{item} is at {middle}"
+    elif array[middle] > item:
+        return f"item at {binary_num_search(arr,start,middle-1,item)}"
+    elif array[middle] < item:
+        return f"item at {binary_num_search(arr,middle-1,stop,item)}"
+
+
+x = [1, 23, 2425, 44, 235, 3254, 325, 435, 234, 523, 423, 452345, 23, 234]
+
+print(binary_num_search(x, 0, len(x), 23))

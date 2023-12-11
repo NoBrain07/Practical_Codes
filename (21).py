@@ -6,28 +6,28 @@ students = {"Roll No.": ["Name", "Marks"]}
 
 while True:
     roll_no = input("Enter Roll Number of Student => ")
-    if (
+    if roll_no.lower() == "end":
+        print("Student Info is recorded")
+        break
+    elif (
         roll_no.lower() != "end"
         and roll_no.isdigit() == True
         and roll_no not in students.keys()
     ):
         details = [input("Enter Name => "), int(input("Enter Marks => "))]
         students.update({roll_no: details})
-    elif roll_no.lower() == "end":
-        print("Student Info is recorded")
-        break
     else:
         print("Don't repeat Roll numbers or use letters as Roll number")
 
 keys = students.keys()
 
+print("Students who have scored more than 75 are =>")
+
 for i in keys:
     try:
         if students[i][1] > 75:
-            print(students[i][0], ",", sep="", end=" ")
+            print(students[i][0])
         else:
             continue
     except:
         continue
-
-print("have scored more than 75 ")

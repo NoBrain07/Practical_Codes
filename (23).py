@@ -3,6 +3,8 @@
 
 products = {}
 
+print("Type 'done' to stop the recording of products =>")
+
 while True:
     keys = products.keys()
     product_name = input("Name of Product : ")
